@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Etch a Sketch</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch A Sketch</title>
+		<script src="javascript.js" defer></script>
+		<link rel="stylesheet" href="stylesheet.css" />
+	</head>
 
-    <script src="javascript.js" defer></script>
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
-
-<body>
-    <div id="container" class="container">
-
-</body>
-
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="header-title">
+					<h1>Etch a Sketch!</h1>
+				</div>
+				<div class="header-inputs">
+					<div class="header-grid-input">
+						<label for="grid-size">Enter grid size (3 to 100):</label>
+						<input id="grid-size" name="grid-size" type="number" value="16" min="3" max="100" />
+						<button>Generate!</button>
+					</div>
+					<div class="color-picker">
+						<label for="favcolor">Select your favorite color:</label>
+						<input type="color" id="favcolor" name="favcolor" value="#ff0000" />
+					</div>
+				</div>
+			</div>
+			<div class="main">
+				<div class="sketchpad"></div>
+			</div>
+		</div>
+	</body>
 </html>

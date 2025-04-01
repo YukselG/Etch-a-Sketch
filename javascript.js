@@ -1,46 +1,69 @@
-function getGridSize() {
-    input = prompt("Enter grid size");
-    var parseInput = parseInt(input);
+const sketchpad = document.querySelector(".sketchpad");
+const inputGridSize = document.querySelector("#grid-size");
+const generateGridButton = document.querySelector("button");
+let inputFavColor = document.querySelector("#favcolor");
 
-    if (parseInput < 2) {
-        parseInput = 2
-    }
+// the total width sizes of the "sketch pad" in pixels
+let totalSketchPadSize = 800;
+let gridSize = parseInt(inputGridSize.value, 10);
 
-    if (parseInput > 16) {
-        parseInput = 12;
-    }
-    return parseInput;
+// function to create grid: takes in gridsize, and computes a row with 'gridSize' cells, 'gridSize' times.
+function createGrid(gridSizeInput) {
+	let gridSize = gridSizeInput;
+	let totalCellSize = totalSketchPadSize / gridSize;
+
+	// clear grid
+	sketchpad.innerHTML = "";
+
+	// subtracting the thin border (2px in total);
+	let paddingSize = totalCellSize - 2;
+
+	// first for loop: x-axis
+	for (let rowIndex = 0; rowIndex < gridSize; rowIndex++) {
+		const row = document.createElement("div");
+		row.classList.add("row");
+		sketchpad.appendChild(row);
+
+		// second for loop: y-axis
+		for (let cellIndex = 0; cellIndex < gridSize; cellIndex++) {
+			const cell = document.createElement("div");
+			cell.classList.add("cell");
+			row.appendChild(cell);
+
+			cell.addEventListener("mouseover", function () {
+				cell.style.backgroundColor = "red";
+				// for random colors
+				//cell.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+			});
+		}
+	}
 }
 
+// create grid with default size of 16
+createGrid(gridSize);
 
-const container = document.querySelector("#container");
+// make user choose grid size - listening for blur so the field is updated when losing focus
+inputGridSize.addEventListener("blur", (event) => {
+	// parse the string value to int
+	gridSize = parseInt(event.target.value, 10);
 
-// creating grid:
+	// check input field value
+	// if the input field is empty string, we cant parse, in that case we set the gridSize to 2
+	if (isNaN(gridSize) || gridSize < 3) {
+		gridSize = 3;
+	} else if (gridSize > 100) {
+		gridSize = 100;
+	}
 
-function createGrid(gridSize) {
-  // first for loop: x-axis
-  for (let index = 0; index < gridSize; index++) {
-    let row = document.createElement("div");
-    row.classList.add("row");
-    container.appendChild(row);
-    //console.log(index);
-    // second for loop: y-axis
-    for (let i = 0; i < gridSize; i++) {
-      let cell = document.createElement("div");
-      cell.classList.add("cell");
-      cell.style.border = "thick solid white";
-      cell.style.width = "60px";
-      cell.style.height = "60px";
-      cell.style.margin = "0px";
-      cell.style.backgroundColor = "grey";
-      cell.addEventListener("mouseover", function (e) {
-        if (e.target.matches(".cell")) {
-          e.target.style.backgroundColor = "red";
-        }
-      });
-      row.appendChild(cell);
-    }
-  }
-}
+	event.target.value = gridSize;
+});
 
-createGrid(getGridSize());
+generateGridButton.addEventListener("click", () => {
+	gridSize = Math.min(100, Math.max(3, parseInt(inputGridSize.value, 10)));
+	inputGridSize.value = gridSize;
+	createGrid(gridSize);
+});
+
+//favColor.addEventListener();
+
+// TODO: Get favorite color of user and use that when painting the grid
