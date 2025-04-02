@@ -13,19 +13,26 @@
 	<body>
 		<div class="container">
 			<div class="header">
-				<div class="header-title">
-					<h1>Etch a Sketch!</h1>
+				<h1>Etch a Sketch!</h1>
+			</div>
+			<div class="grid-size-container">
+				<label for="grid-size">Grid size (3 to 100):</label>
+				<input id="grid-size" name="grid-size" type="number" value="16" min="3" max="100" />
+				<button>Generate!</button>
+			</div>
+			<div class="grid-colors-container">
+				<div class="grid-favcolor-picker">
+					<label for="favcolor">Pick color:</label>
+					<input type="color" id="favcolor" name="favcolor" value="#000000" />
 				</div>
-				<div class="header-inputs">
-					<div class="header-grid-input">
-						<label for="grid-size">Enter grid size (3 to 100):</label>
-						<input id="grid-size" name="grid-size" type="number" value="16" min="3" max="100" />
-						<button>Generate!</button>
-					</div>
-					<div class="color-picker">
-						<label for="favcolor">Select your favorite color:</label>
-						<input type="color" id="favcolor" name="favcolor" value="#ff0000" />
-					</div>
+				<div class="rainbow-colors">
+					<button>Rainbow</button>
+				</div>
+				<div class="darkening-colors">
+					<button>Darkening effect</button>
+				</div>
+				<div class="erase-colors">
+					<button>Eraser</button>
 				</div>
 			</div>
 			<div class="main">

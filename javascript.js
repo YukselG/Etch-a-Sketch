@@ -4,6 +4,7 @@ const generateGridButton = document.querySelector("button");
 let inputFavColor = document.querySelector("#favcolor");
 
 let gridSize = parseInt(inputGridSize.value, 10);
+let favColor = inputFavColor.value;
 
 // function to create grid: takes in gridsize, and computes a row with 'gridSize' cells, 'gridSize' times.
 function createGrid(gridSizeInput) {
@@ -28,7 +29,7 @@ function createGrid(gridSizeInput) {
 // delegate listener to sketchpad
 sketchpad.addEventListener("mouseover", (event) => {
 	if (event.target.classList.contains("cell")) {
-		event.target.style.backgroundColor = "red";
+		event.target.style.backgroundColor = favColor;
 		// for random colors
 		//event.target.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
 	}
@@ -59,6 +60,9 @@ generateGridButton.addEventListener("click", () => {
 // create grid with default size of 16
 createGrid(gridSize);
 
-//favColor.addEventListener();
-// TODO: Get favorite color of user and use that when painting the grid
+inputFavColor.addEventListener("input", (event) => {
+	favColor = event.target.value;
+});
+
 // TODO: Implement rainbow colors functionality
+// TODO: Implement functionality to remove and add grid lines (cell borders)
