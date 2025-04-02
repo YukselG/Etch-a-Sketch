@@ -2,6 +2,7 @@ const sketchpad = document.querySelector(".sketchpad");
 const inputGridSize = document.querySelector("#grid-size");
 const generateGridButton = document.querySelector("button");
 let inputFavColor = document.querySelector("#favcolor");
+let toggleGridLines = document.querySelector("#toggle-grid-lines");
 
 let gridSize = parseInt(inputGridSize.value, 10);
 let favColor = inputFavColor.value;
@@ -64,5 +65,11 @@ inputFavColor.addEventListener("input", (event) => {
 	favColor = event.target.value;
 });
 
+toggleGridLines.addEventListener("click", () => {
+	document.querySelectorAll(".cell").forEach((cell) => {
+		cell.classList.toggle("no-grid-lines");
+	});
+});
+
+// TODO: The user should click and hold mouse button when hovering to sketch
 // TODO: Implement rainbow colors functionality
-// TODO: Implement functionality to remove and add grid lines (cell borders)

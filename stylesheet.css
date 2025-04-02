@@ -15,9 +15,12 @@ button {
 
 .container {
 	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	justify-content: center;
+	gap: 10px;
 }
 
 .header {
@@ -25,19 +28,18 @@ button {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	flex: 5%;
 	gap: 10px;
 }
 
-.header-inputs {
+.grid-colors-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	align-items: center;
-	gap: 80px;
+	justify-content: center;
+	gap: 20px;
 }
 
-.header-grid-input {
+.grid-size-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -46,31 +48,30 @@ button {
 	font-size: 18px;
 }
 
-.header-grid-input > input {
+.grid-size-container > input {
 	font-size: 18px;
 	background-color: rgba(204, 255, 0, 0.106);
 }
 
 .main {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	flex-direction: row;
 	flex: 80%;
+	gap: 80px;
 }
 
 .sketchpad {
-	box-sizing: content-box;
-	width: 800px;
-	height: 800px;
+	width: 700px;
+	height: 700px;
+	border: thin solid black;
 }
 
-.color-picker {
+.grid-favcolor-picker {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 2px;
 	font-size: 18px;
 }
 
@@ -90,4 +91,11 @@ button {
 	flex: 1 1 auto; /* Automatically adjusts size */
 	aspect-ratio: 1 / 1; /* Ensures perfect square */
 	border: thin solid black;
+}
+
+.grid-settings {
+}
+
+.no-grid-lines {
+	border: none !important; /* Remove grid lines - this is used on the cell classlist in javascript*/
 }
