@@ -3,9 +3,11 @@ const inputGridSize = document.querySelector("#grid-size");
 const generateGridButton = document.querySelector("button");
 let inputFavColor = document.querySelector("#favcolor");
 let toggleGridLines = document.querySelector("#toggle-grid-lines");
+let toggleRainbowColors = document.querySelector("#toggle-rainbow-colors");
 
 let gridSize = parseInt(inputGridSize.value, 10);
 let favColor = inputFavColor.value;
+let isRainbowMode = false;
 
 // function to create grid: takes in gridsize, and computes a row with 'gridSize' cells, 'gridSize' times.
 function createGrid(gridSizeInput) {
@@ -30,9 +32,11 @@ function createGrid(gridSizeInput) {
 // delegate listener to sketchpad
 sketchpad.addEventListener("mouseover", (event) => {
 	if (event.target.classList.contains("cell")) {
-		event.target.style.backgroundColor = favColor;
-		// for random colors
-		//event.target.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+		if (isRainbowMode == true) {
+			event.target.style.backgroundColor = getRainbowColors();
+		} else {
+			event.target.style.backgroundColor = favColor;
+		}
 	}
 });
 
@@ -71,5 +75,13 @@ toggleGridLines.addEventListener("click", () => {
 	});
 });
 
+toggleRainbowColors.addEventListener("click", () => {
+	isRainbowMode = !isRainbowMode; // toggle between on and off
+	toggleRainbowColors.classList.toggle("active");
+});
+
+function getRainbowColors() {
+	return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+}
+
 // TODO: The user should click and hold mouse button when hovering to sketch
-// TODO: Implement rainbow colors functionality

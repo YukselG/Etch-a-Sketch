@@ -11,6 +11,16 @@ body {
 
 button {
 	font-size: 18px;
+	padding: 2px;
+	border: thin solid black; /* Keeps a visible border */
+	background-color: rgba(181, 180, 180, 0.159); /* Ensures a default background */
+	color: black; /* Default text color */
+	cursor: pointer; /* Makes it clear it's clickable */
+	transition: background-color 0.3s ease, color 0.3s ease; /* Smooth effect */
+}
+
+button:hover {
+	background-color: rgba(181, 180, 180, 0.778); /* Ensures a default background */
 }
 
 .container {
@@ -50,6 +60,8 @@ button {
 
 .grid-size-container > input {
 	font-size: 18px;
+	padding: 2px;
+	border: thin solid black; /* Keeps a visible border */
 	background-color: rgba(204, 255, 0, 0.106);
 }
 
@@ -98,4 +110,10 @@ button {
 
 .no-grid-lines {
 	border: none !important; /* Remove grid lines - this is used on the cell classlist in javascript*/
+}
+
+#toggle-rainbow-colors.active {
+	background-color: #ffcc00;
+	color: black;
+	border-width: thin;
 }
