@@ -112,7 +112,7 @@ button:hover {
 	border: none !important; /* Remove grid lines - this is used on the cell classlist in javascript*/
 }
 
-#toggle-rainbow-colors.active {
+.active {
 	background-color: #ffcc00;
 	color: black;
 	border-width: thin;
